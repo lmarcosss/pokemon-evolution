@@ -79,19 +79,19 @@ function Home({ pokemons = [] }: Props) {
 }
 
 function loadStarterPokemons() {
-    const pokemons = [
-        PokemonNumberEnum.BULBASAUR,
-        PokemonNumberEnum.CHARMANDER,
-        PokemonNumberEnum.SQUIRTLE,
-    ].map(async (id) => {
-        const { data } = await api.get<PokemonType>('/pokemon', {
-            params: { id },
-        })
+    // const pokemons = [
+    //     PokemonNumberEnum.BULBASAUR,
+    //     PokemonNumberEnum.CHARMANDER,
+    //     PokemonNumberEnum.SQUIRTLE,
+    // ].map(async (id) => {
+    //     const { data } = await api.get<PokemonType>('/pokemon', {
+    //         params: { id },
+    //     })
 
-        return data
-    })
+    //     return data
+    // })
 
-    return Promise.all(pokemons)
+    return Promise.all([])
 }
 
 export async function getStaticProps() {

@@ -17,11 +17,11 @@ export default function Adventure({}: Props) {
 }
 
 async function loadMyPokemonInfo(id: string) {
-    const { data } = await api.get<PokemonType>('/pokemon', {
-        params: { id },
-    })
+    // const { data } = await api.get<PokemonType>('/pokemon', {
+    //     params: { id },
+    // })
 
-    return data
+    return {}
 }
 
 export async function getServerSideProps({ req }: GetServerSidePropsContext) {
