@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-import { LocalStorageKeysEnum } from '../../enums'
-import { useLocalStorage } from '../../hooks/use-local-storage'
+import { LocalStorageKeysEnum } from '@enums'
+import { useLocalStorage } from '@hooks'
 import { BasePage } from '../_base-page'
 
 export default function Adventure() {

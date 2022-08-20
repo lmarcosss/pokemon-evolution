@@ -37,6 +37,7 @@
 
 body {
     background: var(--blue-light);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 button {
