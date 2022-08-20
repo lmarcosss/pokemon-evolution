@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Pokemon Hollow';
+    src: local('Pokemon Hollow'),
+        url(../assets/fonts/Pokemon\ Hollow.ttf) format('woff');
+}
+
+@font-face {
+    font-family: 'Pokemon Solid';
+    src: local('Pokemon Solid'),
+        url(../assets/fonts/Pokemon\ Solid.ttf) format('woff');
+}
+
+@font-face {
+    font-family: 'Retro Game';
+    src: local('Retro Game'),
+        url(../assets/fonts/Retro\ Gaming.ttf) format('woff');
+}
+
+:root {
+    --blue-light: #2a75bb;
+    --yellow: #ffcb05;
+    --blue-dark: #3c5aa6;
+    --yellow-shadow: #c7a008;
+    --red: #ee2e31;
+    --white: #ffffff;
+    --black: #000000;
+    --gray: gray;
+    --font-family-retro: 'Retro Game';
+    --font-family-pokemon-solid: 'Pokemon Solid';
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--blue-light);
+}
+
+button {
+    cursor: pointer;
+}

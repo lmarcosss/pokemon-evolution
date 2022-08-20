@@ -1,0 +1,68 @@
+.chooseOurPokemonScreen {
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chooseOurPokemonScreen .containerPokemons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chooseOurPokemonScreen .title {
+    color: var(--yellow);
+    font-size: 90px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Pokemon Solid';
+}
+
+.chooseOurPokemonScreen .containerPokemons .selectedPokemon {
+    background: var(--yellow);
+    transition: background 0.8s ease;
+}
+
+.chooseOurPokemonScreen .containerPokemons button {
+    margin-left: 60px;
+    background: transparent;
+    border-radius: 50%;
+    padding: 50px;
+    border: none;
+}
+
+.chooseOurPokemonScreen .play {
+    position: absolute;
+    bottom: 50px;
+
+    font-size: 50px;
+    background: var(--red);
+    margin-top: 30px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+
+    font-family: 'Retro Game';
+}
+
+.chooseOurPokemonScreen .play:hover:not(:disabled) {
+    color: var(--black);
+    transition: color 0.5s ease;
+}
+
+.chooseOurPokemonScreen .play:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+}
