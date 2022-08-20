@@ -3,8 +3,8 @@ export enum ScreensEnum {
     JOURNEY_POKEMON = 'JOURNEY_POKEMON',
 }
 
-export enum LocalStorageKeysEnum {
-    CHOOSED_POKEMON = 'choosedPokemon',
+export enum CookiesKeysEnum {
+    MY_POKEMON = 'myPokemon',
 }
 
 export enum PokemonNumberEnum {
@@ -16,4 +16,8 @@ export enum PokemonNumberEnum {
 export enum ApiUrlsEnum {
     NEXT_API = 'http://localhost:3000/api',
     POKEMON_API = 'https://pokeapi.glitch.me/v1/pokemon',
+}
+
+export enum StatusCodeEnum {
+    SUCCESS = 200,
 }

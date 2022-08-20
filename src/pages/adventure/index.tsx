@@ -1,24 +1,53 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-import { LocalStorageKeysEnum } from '@enums'
-import { useLocalStorage } from '@hooks'
-import { BasePage } from '../_base-page'
+import { CookiesKeysEnum } from '@enums'
+import api from '../../services'
+import { MyPokemonType, PokemonType } from '@types'
+import { GetServerSidePropsContext } from 'next'
+import { BasePage } from '@components'
 
-export default function Adventure() {
-    const { getItem } = useLocalStorage()
-    const router = useRouter()
+interface Props {
+    myPokemon: PokemonType
+}
 
-    useEffect(() => {
-        const pokemon = getItem(LocalStorageKeysEnum.CHOOSED_POKEMON)
-
-        if (!pokemon) {
-            router.replace('/')
-        }
-    }, [getItem, router])
-
+export default function Adventure({}: Props) {
     return (
         <BasePage>
             <div>Aventura</div>
         </BasePage>
     )
+}
+
+async function loadMyPokemonInfo(id: string) {
+    const { data } = await api.get<PokemonType>('/pokemon', {
+        params: { id },
+    })
+
+    return data
+}
+
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
+    const cookie = req.cookies[CookiesKeysEnum.MY_POKEMON]
+    const pokemonCookieInfo: Partial<MyPokemonType> =
+        cookie && JSON.parse(cookie)
+
+    try {
+        if (!pokemonCookieInfo?.id) throw Error
+
+        const myPokemonInfoAPI = await loadMyPokemonInfo(pokemonCookieInfo.id)
+
+        return {
+            props: {
+                myPokemon: {
+                    ...myPokemonInfoAPI,
+                    ...pokemonCookieInfo,
+                },
+            },
+        }
+    } catch (error) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
+        }
+    }
 }

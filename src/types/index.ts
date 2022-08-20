@@ -25,3 +25,10 @@ export interface ErrorType {
         }
     }
 }
+
+export interface MyPokemonType {
+    id: string
+    name: string
+    level: number
+    xp: number
+}

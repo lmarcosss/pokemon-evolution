@@ -1,14 +1,13 @@
-import { BasePage } from './_base-page'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import axios from 'axios'
-import { useLocalStorage } from '@hooks'
-import { Button } from '@components'
-import { PokemonType } from '@types'
-import { ApiUrlsEnum, LocalStorageKeysEnum, PokemonNumberEnum } from '@enums'
+import { BasePage, Button } from '@components'
+import { MyPokemonType, PokemonType } from '@types'
+import { CookiesKeysEnum, PokemonNumberEnum } from '@enums'
+import api from '../services'
 
 import styles from '@styles/pages/home.module.css'
+import { useCookies } from 'react-cookie'
 
 interface Props {
     pokemons: PokemonType[]
@@ -18,16 +17,16 @@ function Home({ pokemons = [] }: Props) {
     const [selectedPokemon, setSelectedPokemon] = useState<PokemonType | null>(
         null
     )
-    const { setItem, getItem } = useLocalStorage()
     const router = useRouter()
+    const [choosedPokemon, setChoosedPokemon] = useCookies([
+        CookiesKeysEnum.MY_POKEMON,
+    ])
 
     useEffect(() => {
-        const pokemon = getItem(LocalStorageKeysEnum.CHOOSED_POKEMON)
-
-        if (pokemon) {
+        if (!Object.keys(choosedPokemon)) {
             router.replace('/adventure')
         }
-    }, [getItem, router])
+    }, [choosedPokemon, router])
 
     function onPlayGame() {
         const pokemon = {
@@ -35,9 +34,9 @@ function Home({ pokemons = [] }: Props) {
             name: selectedPokemon?.name,
             level: 1,
             xp: 0,
-        }
+        } as MyPokemonType
 
-        setItem(LocalStorageKeysEnum.CHOOSED_POKEMON, pokemon)
+        setChoosedPokemon(CookiesKeysEnum.MY_POKEMON, pokemon)
         router.replace('/adventure')
     }
 
@@ -80,16 +79,12 @@ function Home({ pokemons = [] }: Props) {
 }
 
 function loadStarterPokemons() {
-    const http = axios.create({
-        baseURL: `${ApiUrlsEnum.NEXT_API}/pokemon`,
-    })
-
     const pokemons = [
         PokemonNumberEnum.BULBASAUR,
         PokemonNumberEnum.CHARMANDER,
         PokemonNumberEnum.SQUIRTLE,
     ].map(async (id) => {
-        const { data } = await http.get<PokemonType>('', {
+        const { data } = await api.get<PokemonType>('/pokemon', {
             params: { id },
         })
 

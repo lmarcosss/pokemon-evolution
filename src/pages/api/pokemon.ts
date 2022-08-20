@@ -1,8 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import type { ErrorType, PokemonResponseType } from '@types'
 import axios from 'axios'
-import { ApiUrlsEnum } from '@enums'
+
+import type { ErrorType, PokemonResponseType } from '@types'
+import { ApiUrlsEnum, StatusCodeEnum } from '@enums'
 
 export default async function handler(
     req: NextApiRequest,
@@ -15,7 +16,7 @@ export default async function handler(
 
         const { data } = await http.get<PokemonResponseType>(`/${req.query.id}`)
 
-        res.status(200).json({ ...data[0] })
+        res.status(StatusCodeEnum.SUCCESS).json({ ...data[0] })
     } catch (error) {
         const { response } = error as ErrorType
 
