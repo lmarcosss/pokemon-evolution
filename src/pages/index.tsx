@@ -1,26 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { BasePage, Button } from '@components'
-import { MyPokemonType, PokemonType } from '@types'
-import { CookiesKeysEnum, PokemonNumberEnum } from '@enums'
-import api from '../services'
+import { useCookies } from 'react-cookie'
+import { BasePage, Button, CodeModal } from '@components'
+import { MyPokemonType, PokemonType, ErrorType } from '@types'
+import { CookiesKeysEnum, ErrorMessages, PokemonNumberEnum } from '@enums'
+import api from 'src/services'
+import { toast } from 'react-toastify'
 
 import styles from '@styles/pages/home.module.css'
-import { useCookies } from 'react-cookie'
 
 interface Props {
-    pokemons: PokemonType[]
+    pokemonsAPI: PokemonType[]
 }
 
-function Home({ pokemons = [] }: Props) {
-    const [selectedPokemon, setSelectedPokemon] = useState<PokemonType | null>(
-        null
-    )
+interface SelectedPokemonType extends PokemonType {
+    isPokemonByCode?: boolean
+}
+
+function Home({ pokemonsAPI = [] }: Props) {
+    const [selectedPokemon, setSelectedPokemon] =
+        useState<SelectedPokemonType | null>(null)
+    const [code, setCode] = useState('')
+    const [pokemons, setPokemons] = useState<SelectedPokemonType[]>(pokemonsAPI)
     const router = useRouter()
     const [choosedPokemon, setChoosedPokemon] = useCookies([
         CookiesKeysEnum.MY_POKEMON,
     ])
+
+    const [isVisible, setVisible] = useState(false)
 
     useEffect(() => {
         if (!Object.keys(choosedPokemon)) {
@@ -40,10 +48,55 @@ function Home({ pokemons = [] }: Props) {
         router.replace('/adventure')
     }
 
+    function onCloseModal() {
+        setVisible(false)
+    }
+
+    function onOpenModal() {
+        setVisible(true)
+    }
+
+    async function onSubmitCode() {
+        try {
+            const { data: newPokemon } = await api.get<PokemonType>(
+                '/pokemon',
+                {
+                    params: { id: code },
+                }
+            )
+
+            setPokemons([{ ...newPokemon, isPokemonByCode: true }])
+        } catch (error) {
+            const errorApi = error as ErrorType
+
+            toast.error(
+                errorApi?.response.data.message ||
+                    errorApi?.message ||
+                    ErrorMessages.UNEXPECTED_ERROR,
+                { theme: 'colored' }
+            )
+        } finally {
+            onCloseModal()
+            setCode('')
+        }
+    }
+
     return (
         <BasePage>
             <div className={styles.chooseOurPokemonScreen}>
-                <span className={styles.title}>Escolha seu Pokémon</span>
+                <span className={styles.title}>
+                    Escolha
+                    <span onClick={onOpenModal}> seu </span>
+                    Pokémon
+                </span>
+
+                <CodeModal
+                    code={code}
+                    setCode={setCode}
+                    onSubmit={onSubmitCode}
+                    onCloseModal={onCloseModal}
+                    isVisible={isVisible}
+                />
 
                 <div className={styles.containerPokemons}>
                     {pokemons.map((pokemon) => (
@@ -95,11 +148,11 @@ function loadStarterPokemons() {
 }
 
 export async function getStaticProps() {
-    const pokemons = await loadStarterPokemons()
+    const pokemonsAPI = await loadStarterPokemons()
 
     return {
         props: {
-            pokemons,
+            pokemonsAPI,
         },
     }
 }

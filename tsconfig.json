@@ -20,8 +20,7 @@
             "@types": ["src/types"],
             "@enums": ["src/enums"],
             "@hooks": ["src/hooks"],
-            "@styles/*": ["src/styles/*"],
-            "@services": ["src/services"]
+            "@styles/*": ["src/styles/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

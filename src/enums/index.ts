@@ -20,4 +20,10 @@ export enum ApiUrlsEnum {
 
 export enum StatusCodeEnum {
     SUCCESS = 200,
+    NOT_FOUND = 404,
+}
+
+export enum ErrorMessages {
+    POKEMON_NOT_FOUND = 'Pokemon não encontrado!',
+    UNEXPECTED_ERROR = 'Erro inesperado',
 }

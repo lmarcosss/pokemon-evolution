@@ -1,5 +1,5 @@
 import { CookiesKeysEnum } from '@enums'
-import api from '../../services'
+import api from 'src/services'
 import { MyPokemonType, PokemonType } from '@types'
 import { GetServerSidePropsContext } from 'next'
 import { BasePage } from '@components'

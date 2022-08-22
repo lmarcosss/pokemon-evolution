@@ -1,0 +1,68 @@
+.containerModal {
+    width: 400px;
+    padding: 30px 20px;
+    position: relative;
+}
+
+.closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0px 5px;
+    border: none;
+    font-size: 16px;
+    font-family: 'Retro Game';
+}
+
+.containerModal p {
+    font-size: 18px;
+    font-family: 'Retro Game';
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.containerModal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.codeButton {
+    width: 100px;
+    font-family: 'Retro Game';
+    margin-top: 20px;
+    border: none;
+    background-color: var(--yellow);
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+}
+
+.codeButton:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+.codeButton:disabled {
+    background: var(--gray);
+    color: var(--white);
+    cursor: not-allowed;
+}
+
+.codeInput {
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px dashed black;
+    font-family: 'Retro Game';
+    width: 100px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.codeInput:hover,
+.codeInput:focus,
+.codeInput:valid {
+    outline: none;
+    border-bottom-color: var(--yellow);
+}
