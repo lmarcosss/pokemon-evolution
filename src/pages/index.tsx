@@ -67,6 +67,7 @@ function Home({ pokemonsAPI = [] }: Props) {
 
             setPokemons([{ ...newPokemon, isPokemonByCode: true }])
         } catch (error) {
+            console.log(error)
             const errorApi = error as ErrorType
 
             toast.error(
@@ -89,14 +90,6 @@ function Home({ pokemonsAPI = [] }: Props) {
                     <span onClick={onOpenModal}> seu </span>
                     Pokémon
                 </span>
-
-                <CodeModal
-                    code={code}
-                    setCode={setCode}
-                    onSubmit={onSubmitCode}
-                    onCloseModal={onCloseModal}
-                    isVisible={isVisible}
-                />
 
                 <div className={styles.containerPokemons}>
                     {pokemons.map((pokemon) => (
@@ -127,6 +120,14 @@ function Home({ pokemonsAPI = [] }: Props) {
                     Bora Jogar
                 </Button>
             </div>
+
+            <CodeModal
+                code={code}
+                setCode={setCode}
+                onSubmit={onSubmitCode}
+                onCloseModal={onCloseModal}
+                isVisible={isVisible}
+            />
         </BasePage>
     )
 }
