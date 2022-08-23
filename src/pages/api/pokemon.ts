@@ -19,11 +19,11 @@ export default async function handler(
     } catch (error) {
         const { response } = error as ErrorType
 
-        if (response.data.error === StatusCodeEnum.NOT_FOUND) {
-            res.status(StatusCodeEnum.NOT_FOUND).json({
-                message: ErrorMessages.POKEMON_NOT_FOUND,
-            })
-        }
+        // if (response.data.error === StatusCodeEnum.NOT_FOUND) {
+        //     res.status(StatusCodeEnum.NOT_FOUND).json({
+        //         message: ErrorMessages.POKEMON_NOT_FOUND,
+        //     })
+        // }
 
         res.status(response.data.error).json({
             message: response.data.message,
