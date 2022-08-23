@@ -19,12 +19,6 @@ export default async function handler(
     } catch (error) {
         const errorApi = error as ErrorType
 
-        if (errorApi.response.data.error === StatusCodeEnum.NOT_FOUND) {
-            res.status(StatusCodeEnum.NOT_FOUND).json({
-                message: ErrorMessages.POKEMON_NOT_FOUND,
-            })
-        }
-
         res.status(errorApi.response.data.error).json({
             message: errorApi.response.data.message,
         })

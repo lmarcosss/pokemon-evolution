@@ -67,7 +67,6 @@ function Home({ pokemonsAPI = [] }: Props) {
 
             setPokemons([{ ...newPokemon, isPokemonByCode: true }])
         } catch (error) {
-            console.log(error)
             const errorApi = error as ErrorType
 
             toast.error(
