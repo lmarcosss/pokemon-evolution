@@ -19,6 +19,7 @@ export interface PokemonType {
 
 export interface ErrorType {
     message: string
+    status: number
     response: {
         data: {
             error: number
