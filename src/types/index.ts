@@ -21,6 +21,7 @@ export interface ErrorType {
     message: string
     status: number
     response: {
+        status: number
         data: {
             error: number
             message: string

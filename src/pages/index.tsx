@@ -4,7 +4,12 @@ import Image from 'next/image'
 import { useCookies } from 'react-cookie'
 import { BasePage, Button, CodeModal } from '@components'
 import { MyPokemonType, PokemonType, ErrorType } from '@types'
-import { CookiesKeysEnum, ErrorMessages, PokemonNumberEnum } from '@enums'
+import {
+    CookiesKeysEnum,
+    ErrorMessages,
+    PokemonNumberEnum,
+    StatusCodeEnum,
+} from '@enums'
 import api from 'src/services'
 import { toast } from 'react-toastify'
 
@@ -69,12 +74,14 @@ function Home({ pokemonsAPI = [] }: Props) {
         } catch (error) {
             const errorApi = error as ErrorType
 
-            toast.error(
-                errorApi?.response.data.message ||
-                    errorApi?.message ||
-                    ErrorMessages.UNEXPECTED_ERROR,
-                { theme: 'colored' }
-            )
+            const errorMessage =
+                errorApi.response.status === StatusCodeEnum.NOT_FOUND
+                    ? ErrorMessages.POKEMON_NOT_FOUND
+                    : errorApi?.message
+
+            toast.error(errorMessage || ErrorMessages.UNEXPECTED_ERROR, {
+                theme: 'colored',
+            })
         } finally {
             onCloseModal()
             setCode('')
