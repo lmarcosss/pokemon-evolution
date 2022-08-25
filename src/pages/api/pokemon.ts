@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
 import type { ErrorType, PokemonResponseType } from '@types'
-import { ApiUrlsEnum, ErrorMessages, StatusCodeEnum } from '@enums'
+import { ApiUrlsEnum, StatusCodeEnum } from '@enums'
 
 export default async function handler(
     req: NextApiRequest,
