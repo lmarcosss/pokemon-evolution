@@ -23,7 +23,7 @@ export enum StatusCodeEnum {
     NOT_FOUND = 404,
 }
 
-export enum ErrorMessages {
+export enum ErrorMessagesEnum {
     POKEMON_NOT_FOUND = 'Pokemon não encontrado!',
     UNEXPECTED_ERROR = 'Erro inesperado',
 }

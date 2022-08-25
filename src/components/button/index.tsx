@@ -16,6 +16,7 @@ export function Button({
 }: Props) {
     return (
         <button
+            data-testid="button"
             onClick={onClick}
             disabled={disabled}
             className={className}

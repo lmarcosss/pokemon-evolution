@@ -3,15 +3,9 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useCookies } from 'react-cookie'
 import { BasePage, Button, CodeModal } from '@components'
-import { MyPokemonType, PokemonType, ErrorType } from '@types'
-import {
-    CookiesKeysEnum,
-    ErrorMessages,
-    PokemonNumberEnum,
-    StatusCodeEnum,
-} from '@enums'
+import { MyPokemonType, PokemonType, SelectedPokemonType } from '@types'
+import { CookiesKeysEnum, PokemonNumberEnum } from '@enums'
 import api from 'src/services'
-import { toast } from 'react-toastify'
 
 import styles from '@styles/pages/home.module.css'
 
@@ -19,14 +13,9 @@ interface Props {
     pokemonsAPI: PokemonType[]
 }
 
-interface SelectedPokemonType extends PokemonType {
-    isPokemonByCode?: boolean
-}
-
 function Home({ pokemonsAPI = [] }: Props) {
     const [selectedPokemon, setSelectedPokemon] =
         useState<SelectedPokemonType | null>(null)
-    const [code, setCode] = useState('')
     const [pokemons, setPokemons] = useState<SelectedPokemonType[]>(pokemonsAPI)
     const router = useRouter()
     const [choosedPokemon, setChoosedPokemon] = useCookies([
@@ -59,33 +48,6 @@ function Home({ pokemonsAPI = [] }: Props) {
 
     function onOpenModal() {
         setVisible(true)
-    }
-
-    async function onSubmitCode() {
-        try {
-            const { data: newPokemon } = await api.get<PokemonType>(
-                '/pokemon',
-                {
-                    params: { id: code },
-                }
-            )
-
-            setPokemons([{ ...newPokemon, isPokemonByCode: true }])
-        } catch (error) {
-            const errorApi = error as ErrorType
-
-            const errorMessage =
-                errorApi.response.status === StatusCodeEnum.NOT_FOUND
-                    ? ErrorMessages.POKEMON_NOT_FOUND
-                    : errorApi?.message
-
-            toast.error(errorMessage || ErrorMessages.UNEXPECTED_ERROR, {
-                theme: 'colored',
-            })
-        } finally {
-            onCloseModal()
-            setCode('')
-        }
     }
 
     return (
@@ -128,9 +90,7 @@ function Home({ pokemonsAPI = [] }: Props) {
             </div>
 
             <CodeModal
-                code={code}
-                setCode={setCode}
-                onSubmit={onSubmitCode}
+                setPokemons={setPokemons}
                 onCloseModal={onCloseModal}
                 isVisible={isVisible}
             />

@@ -35,3 +35,7 @@ export interface MyPokemonType {
     level: number
     xp: number
 }
+
+export interface SelectedPokemonType extends PokemonType {
+    isPokemonByCode?: boolean
+}

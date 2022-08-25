@@ -19,7 +19,6 @@
             "@components": ["src/components"],
             "@types": ["src/types"],
             "@enums": ["src/enums"],
-            "@hooks": ["src/hooks"],
             "@styles/*": ["src/styles/*"]
         }
     },

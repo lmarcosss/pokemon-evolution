@@ -7,8 +7,6 @@ interface Props {
 }
 
 export function Modal({ isVisible, onClose, children }: Props) {
-    if (!isVisible) return null
-
     return (
         <div
             onClick={onClose}
