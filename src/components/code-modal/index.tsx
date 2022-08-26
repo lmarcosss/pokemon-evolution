@@ -16,7 +16,10 @@ export function CodeModal({ onCloseModal, isVisible, onSubmit }: Props) {
     function onSubmitForm(event: FormEvent) {
         event.preventDefault()
         onSubmit(code)
-        setCode('')
+
+        setTimeout(() => {
+            setCode('')
+        }, 1000)
     }
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {
