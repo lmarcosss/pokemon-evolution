@@ -1,0 +1,4 @@
+- name: Install dependencies
+   run: yarn
+- name: Test and coverage
+   run: yarn jest --coverage
