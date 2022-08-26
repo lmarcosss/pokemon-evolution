@@ -3,9 +3,20 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { useCookies } from 'react-cookie'
 import { BasePage, Button, CodeModal } from '@components'
-import { MyPokemonType, PokemonType, SelectedPokemonType } from '@types'
-import { CookiesKeysEnum, PokemonNumberEnum } from '@enums'
+import {
+    ErrorType,
+    MyPokemonType,
+    PokemonType,
+    SelectedPokemonType,
+} from '@types'
+import {
+    CookiesKeysEnum,
+    ErrorMessagesEnum,
+    PokemonNumberEnum,
+    StatusCodeEnum,
+} from '@enums'
 import api from 'src/services'
+import { toast } from 'react-toastify'
 
 import styles from '@styles/pages/home.module.css'
 
@@ -50,6 +61,32 @@ function Home({ pokemonsAPI = [] }: Props) {
         setVisible(true)
     }
 
+    async function onSubmitCode(code: string) {
+        try {
+            const { data: newPokemon } = await api.get<PokemonType>(
+                '/pokemon',
+                {
+                    params: { id: code },
+                }
+            )
+
+            setPokemons([{ ...newPokemon, isPokemonByCode: true }])
+        } catch (error) {
+            const errorApi = error as ErrorType
+
+            const errorMessage =
+                errorApi.response.status === StatusCodeEnum.NOT_FOUND
+                    ? ErrorMessagesEnum.POKEMON_NOT_FOUND
+                    : errorApi?.message
+
+            toast.error(errorMessage || ErrorMessagesEnum.UNEXPECTED_ERROR, {
+                theme: 'colored',
+            })
+        } finally {
+            onCloseModal()
+        }
+    }
+
     return (
         <BasePage>
             <div className={styles.chooseOurPokemonScreen}>
@@ -90,9 +127,9 @@ function Home({ pokemonsAPI = [] }: Props) {
             </div>
 
             <CodeModal
-                setPokemons={setPokemons}
                 onCloseModal={onCloseModal}
                 isVisible={isVisible}
+                onSubmit={onSubmitCode}
             />
         </BasePage>
     )

@@ -1,52 +1,22 @@
 import { Button } from '../button'
 import { FormEvent, useState } from 'react'
 import { Modal } from '../modal'
-import api from 'src/services'
-import { ErrorType, PokemonType, SelectedPokemonType } from '@types'
-import { toast } from 'react-toastify'
-import { ErrorMessagesEnum, StatusCodeEnum } from '@enums'
 
 import styles from '@styles/components/code-modal.module.css'
 
 interface Props {
     isVisible: boolean
     onCloseModal(): void
-    setPokemons(pokemons: SelectedPokemonType[]): void
+    onSubmit(code: string): void
 }
 
-export function CodeModal({ onCloseModal, isVisible, setPokemons }: Props) {
+export function CodeModal({ onCloseModal, isVisible, onSubmit }: Props) {
     const [code, setCode] = useState('')
-
-    async function onSubmitCode() {
-        try {
-            const { data: newPokemon } = await api.get<PokemonType>(
-                '/pokemon',
-                {
-                    params: { id: code },
-                }
-            )
-
-            setPokemons([{ ...newPokemon, isPokemonByCode: true }])
-        } catch (error) {
-            const errorApi = error as ErrorType
-
-            const errorMessage =
-                errorApi.response.status === StatusCodeEnum.NOT_FOUND
-                    ? ErrorMessagesEnum.POKEMON_NOT_FOUND
-                    : errorApi?.message
-
-            toast.error(errorMessage || ErrorMessagesEnum.UNEXPECTED_ERROR, {
-                theme: 'colored',
-            })
-        } finally {
-            onCloseModal()
-            setCode('')
-        }
-    }
 
     function onSubmitForm(event: FormEvent) {
         event.preventDefault()
-        onSubmitCode()
+        onSubmit(code)
+        setCode('')
     }
 
     function onChange(event: React.ChangeEvent<HTMLInputElement>) {
