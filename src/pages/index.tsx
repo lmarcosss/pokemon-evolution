@@ -17,29 +17,40 @@ import {
 } from '@enums'
 import api from 'src/services'
 import { toast } from 'react-toastify'
+import { GetServerSideProps } from 'next'
 
 import styles from '@styles/pages/home.module.css'
 
 interface Props {
     pokemonsAPI: PokemonType[]
+    errorMessage?: string
 }
 
-function Home({ pokemonsAPI = [] }: Props) {
+function Home({ pokemonsAPI, errorMessage }: Props) {
     const [selectedPokemon, setSelectedPokemon] =
         useState<SelectedPokemonType | null>(null)
-    const [pokemons, setPokemons] = useState<SelectedPokemonType[]>(pokemonsAPI)
+    const [pokemons, setPokemons] = useState<SelectedPokemonType[]>(
+        pokemonsAPI || []
+    )
     const router = useRouter()
     const [choosedPokemon, setChoosedPokemon] = useCookies([
         CookiesKeysEnum.MY_POKEMON,
     ])
-
     const [isVisible, setVisible] = useState(false)
 
     useEffect(() => {
-        if (!Object.keys(choosedPokemon)) {
+        if (!!Object.keys(choosedPokemon).length) {
             router.replace('/adventure')
         }
     }, [choosedPokemon, router])
+
+    useEffect(() => {
+        if (errorMessage) {
+            toast.error(errorMessage, {
+                theme: 'colored',
+            })
+        }
+    }, [errorMessage])
 
     function onPlayGame() {
         const pokemon = {
@@ -151,13 +162,22 @@ function loadStarterPokemons() {
     return Promise.all(pokemons)
 }
 
-export async function getStaticProps() {
-    const pokemonsAPI = await loadStarterPokemons()
+export const getServerSideProps: GetServerSideProps = async () => {
+    try {
+        const pokemonsAPI = await loadStarterPokemons()
 
-    return {
-        props: {
-            pokemonsAPI,
-        },
+        return {
+            props: {
+                pokemonsAPI,
+            },
+        }
+    } catch (error) {
+        return {
+            props: {
+                pokemonsAPI: [],
+                errorMessage: ErrorMessagesEnum.UNEXPECTED_ERROR,
+            },
+        }
     }
 }
 
