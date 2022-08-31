@@ -27,12 +27,14 @@ yarn dev
 
 ## Tecnologies
 * [NextJS](https://github.com/vercel/next.js)
-* [Axios](https://github.com/axios/axios)
-* [Typescript](https://github.com/microsoft/TypeScript)
 * [React Toastfy](https://github.com/fkhadra/react-toastify)
 * [React Cookie](https://github.com/reactivestack/cookies)
+* [Axios](https://github.com/axios/axios)
+* [Typescript](https://github.com/microsoft/TypeScript)
 * [Jest](https://github.com/facebook/jest)
 * [React Testing Library](https://github.com/testing-library/react-testing-library)
+* [Prettier](https://github.com/prettier/prettier)
+* [Eslint](https://github.com/eslint/eslint)
 
 ## External API's
 * [PokeDex API](https://pokedevs.gitbook.io/pokedex/)
