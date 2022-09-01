@@ -14,6 +14,9 @@ export function Button({
     type = 'button',
     ...props
 }: Props) {
+    
+    console.log("teste workflow")
+
     return (
         <button
             data-testid="button"
