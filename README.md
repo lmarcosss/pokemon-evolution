@@ -25,7 +25,7 @@ yarn dev
   <img width="800px" src="https://user-images.githubusercontent.com/32651857/185729873-768fb6aa-7cae-4818-bf24-aa959ec5046d.png" />
 </p>
 
-## Tecnologies
+## Technologies
 * [NextJS](https://github.com/vercel/next.js)
 * [React Toastfy](https://github.com/fkhadra/react-toastify)
 * [React Cookie](https://github.com/reactivestack/cookies)
