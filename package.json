@@ -7,7 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test": "jest --watchAll --verbose"
+        "test": "jest --coverage"
     },
     "dependencies": {
         "axios": "0.27.2",
@@ -32,14 +32,5 @@
         "jest-sonar-reporter": "^2.0.0",
         "prettier": "2.7.1",
         "typescript": "4.7.4"
-    },
-    "jest": {
-        "testEnvironment": "node",
-        "collectCoverage": true,
-        "testResultsProcessor": "jest-sonar-reporter",
-        "coveragePathIgnorePatterns": [
-            "/node_modules/",
-            "/test/"
-        ]
     }
 }
