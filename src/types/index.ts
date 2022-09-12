@@ -29,7 +29,7 @@ export interface ErrorType {
     }
 }
 
-export interface MyPokemonType {
+export interface MyPokemonType extends PokemonType {
     id: string
     name: string
     level: number
@@ -38,4 +38,10 @@ export interface MyPokemonType {
 
 export interface SelectedPokemonType extends PokemonType {
     isPokemonByCode?: boolean
+}
+
+export interface MissionType {
+    title: string
+    time: number
+    xp: number
 }

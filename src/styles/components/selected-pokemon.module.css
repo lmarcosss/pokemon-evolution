@@ -1,0 +1,50 @@
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 180px;
+    background-color: var(--white);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.wrapperImage {
+    background-color: rgba(199, 160, 8, 0.7);
+    border-top-left-radius: 5px;
+    padding: 10px;
+}
+
+.pokemonImage {
+    width: 100%;
+    margin: 10px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    border-left-width: 1px;
+    border-left-color: gainsboro;
+    border-left-style: solid;
+    height: 100%;
+}
+
+.information {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.name {
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom: 2px;
+}

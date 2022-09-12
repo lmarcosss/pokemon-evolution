@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Rest and eat good food",
+        "time": 10,
+        "xp": 10
+    },
+    {
+        "title": "Run in the woods",
+        "time": 20,
+        "xp": 20
+    },
+    {
+        "title": "Find fruits",
+        "time": 30,
+        "xp": 30
+    },
+    {
+        "title": "Search new enemies",
+        "time": 40,
+        "xp": 40
+    },
+    {
+        "title": "Battle to wild pokemon",
+        "time": 50,
+        "xp": 50
+    },
+    {
+        "title": "Battle to Team Rocket",
+        "time": 60,
+        "xp": 60
+    }
+]
