@@ -22,7 +22,7 @@ yarn dev
 ### App Home
 #### This page you choose your starter pokemon to play!
 <p align="center">
-  <img width="800px" src="https://user-images.githubusercontent.com/32651857/185729873-768fb6aa-7cae-4818-bf24-aa959ec5046d.png" />
+  <img width="800px" src="https://user-images.githubusercontent.com/32651857/189775835-064e4f17-2d6c-44c7-957b-f5bde72b6e4c.png" />
 </p>
 
 ## Technologies
