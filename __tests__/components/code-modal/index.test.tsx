@@ -10,6 +10,8 @@ describe('Code Modal', () => {
         onSubmit: jest.fn(),
     }
 
+    const buttonText = 'Activate Code'
+
     it('render input code', () => {
         const pokemonCode = '123'
 
@@ -25,7 +27,7 @@ describe('Code Modal', () => {
     it('render finish button', () => {
         render(<CodeModal {...props} />)
 
-        const finishButton = screen.queryByText('Ativar Código')
+        const finishButton = screen.queryByText(buttonText)
 
         expect(finishButton).toBeInTheDocument()
     })
@@ -39,7 +41,7 @@ describe('Code Modal', () => {
         const codeInput = screen.getByRole<HTMLInputElement>('textbox')
         fireEvent.change(codeInput, { target: { value: pokemonCode } })
 
-        const finishButton = screen.getByText(/Ativar Código/i)
+        const finishButton = screen.getByText(/Activate Code/i)
         finishButton.onclick = onFinish
         fireEvent.click(finishButton)
 
@@ -49,7 +51,7 @@ describe('Code Modal', () => {
     it('finish button disabled when input is empty', () => {
         render(<CodeModal {...props} />)
 
-        const finishButton = screen.getByText(/Ativar Código/i)
+        const finishButton = screen.getByText(buttonText)
 
         expect(finishButton).toBeDisabled()
     })

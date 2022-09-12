@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/button/index.test.tsx">
+    <testCase name="Button render button" duration="21"/>
+  </file>
+  <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/base-page/index.test.tsx">
+    <testCase name="Base Page render base page" duration="24"/>
+  </file>
+  <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/modal/index.test.tsx">
+    <testCase name="Modal render modal" duration="25"/>
+    <testCase name="Modal render modal when isVisible is false" duration="3"/>
+  </file>
+  <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/code-modal/index.test.tsx">
+    <testCase name="Code Modal render input code" duration="98"/>
+    <testCase name="Code Modal render finish button" duration="6"/>
+    <testCase name="Code Modal click finish button" duration="19"/>
+    <testCase name="Code Modal finish button disabled when input is empty" duration="4"/>
+  </file>
+</testExecutions>
