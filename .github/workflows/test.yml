@@ -1,4 +1,4 @@
-name: PR - Teste com Jest
+name: Jest
 on:
     push:
         branches:
