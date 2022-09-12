@@ -1,3 +1,5 @@
+import styles from '@styles/components/button.module.css'
+
 interface Props {
     children: React.ReactNode
     className?: string
@@ -14,15 +16,12 @@ export function Button({
     type = 'button',
     ...props
 }: Props) {
-    
-    console.log("teste workflow")
-
     return (
         <button
             data-testid="button"
             onClick={onClick}
             disabled={disabled}
-            className={className}
+            className={`${className} ${styles.button}`}
             type={type}
             {...props}
         >

@@ -33,16 +33,8 @@ function Home({ pokemonsAPI, errorMessage }: Props) {
         pokemonsAPI || []
     )
     const router = useRouter()
-    const [choosedPokemon, setChoosedPokemon] = useCookies([
-        CookiesKeysEnum.MY_POKEMON,
-    ])
+    const [, setChoosedPokemon] = useCookies([CookiesKeysEnum.MY_POKEMON])
     const [isVisible, setVisible] = useState(false)
-
-    useEffect(() => {
-        if (!!Object.keys(choosedPokemon).length) {
-            router.replace('/adventure')
-        }
-    }, [choosedPokemon, router])
 
     useEffect(() => {
         if (errorMessage) {
@@ -59,6 +51,8 @@ function Home({ pokemonsAPI, errorMessage }: Props) {
             level: 1,
             xp: 0,
         } as MyPokemonType
+
+        debugger
 
         setChoosedPokemon(CookiesKeysEnum.MY_POKEMON, pokemon)
         router.replace('/adventure')
@@ -102,8 +96,8 @@ function Home({ pokemonsAPI, errorMessage }: Props) {
         <BasePage>
             <div className={styles.chooseOurPokemonScreen}>
                 <span className={styles.title}>
-                    Escolha
-                    <span onClick={onOpenModal}> seu </span>
+                    Choose
+                    <span onClick={onOpenModal}> your </span>
                     Pokémon
                 </span>
 
@@ -133,7 +127,7 @@ function Home({ pokemonsAPI, errorMessage }: Props) {
                     onClick={onPlayGame}
                     className={styles.play}
                 >
-                    Bora Jogar
+                    Go Play
                 </Button>
             </div>
 
@@ -162,7 +156,20 @@ function loadStarterPokemons() {
     return Promise.all(pokemons)
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+    const cookie = req.cookies[CookiesKeysEnum.MY_POKEMON]
+    const pokemonCookieInfo: Partial<MyPokemonType> =
+        cookie && JSON.parse(cookie)
+
+    if (pokemonCookieInfo?.id) {
+        return {
+            redirect: {
+                destination: '/adventure',
+                permanent: false,
+            },
+        }
+    }
+
     try {
         const pokemonsAPI = await loadStarterPokemons()
 

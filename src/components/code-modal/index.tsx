@@ -34,11 +34,8 @@ export function CodeModal({ onCloseModal, isVisible, onSubmit }: Props) {
                 </Button>
 
                 <div>
-                    <p>Que demais, você descobriu o segredo!</p>
-                    <p>
-                        Agora você pode escolher outro pokemon utilizando o
-                        código dele...
-                    </p>
+                    <p>Its awesome, you finded the secret!</p>
+                    <p>Now you can choose other Pokemon using his code...</p>
                 </div>
 
                 <form onSubmit={onSubmitForm}>
@@ -56,7 +53,7 @@ export function CodeModal({ onCloseModal, isVisible, onSubmit }: Props) {
                         type="submit"
                         className={styles.codeButton}
                     >
-                        Ativar Código
+                        Activate Code
                     </Button>
                 </form>
             </div>

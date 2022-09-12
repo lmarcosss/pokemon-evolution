@@ -5,7 +5,7 @@ export interface PokemonResponseType {
 export interface PokemonType {
     number: string
     name: string
-    type: string[]
+    types: string[]
     height: string
     weight: string
     family: {

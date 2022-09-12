@@ -1,0 +1,12 @@
+.button {
+    font-family: var(--font-family-retro);
+    border: none;
+}
+
+.button:disabled {
+    background-color: gray;
+}
+
+.button:hover:not(:disabled) {
+    opacity: 0.8;
+}
