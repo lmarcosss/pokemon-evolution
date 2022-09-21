@@ -2,7 +2,7 @@
     width: 400px;
     padding: 30px 20px;
     position: relative;
-    font-family: 'Retro Game', Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-retro), Arial, Helvetica, sans-serif;
 }
 
 .closeButton {
@@ -34,7 +34,7 @@
     background-color: var(--yellow);
     border-radius: 5px;
     padding: 5px;
-    color: black;
+    color: var(--black);
 }
 
 .codeButton:hover:not(:disabled) {
@@ -51,7 +51,7 @@
     border-left: none;
     border-top: none;
     border-right: none;
-    border-bottom: 2px dashed black;
+    border-bottom: 2px dashed var(--black);
     width: 100px;
     text-align: center;
     font-size: 25px;
@@ -59,7 +59,7 @@
 
 .codeInput,
 .codeButton {
-    font-family: 'Retro Game', Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-retro), Arial, Helvetica, sans-serif;
 }
 
 .codeInput:hover,

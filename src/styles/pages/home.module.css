@@ -21,7 +21,7 @@
     font-size: 90px;
     text-align: center;
     margin-bottom: 50px;
-    font-family: 'Pokemon Solid', Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-pokemon-solid), Arial, Helvetica, sans-serif;
 }
 
 .chooseOurPokemonScreen .containerPokemons .selectedPokemon {
@@ -51,7 +51,7 @@
     border: none;
     border-radius: 5px;
 
-    font-family: 'Retro Game', Arial, Helvetica, sans-serif;
+    font-family: var(--font-family-retro), Arial, Helvetica, sans-serif;
 }
 
 .chooseOurPokemonScreen .play:hover:not(:disabled) {

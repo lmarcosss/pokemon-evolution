@@ -27,6 +27,10 @@
     --gray: gray;
     --font-family-retro: 'Retro Game';
     --font-family-pokemon-solid: 'Pokemon Solid';
+    --antiquewhite: antiquewhite;
+    --black-with-opacity: rgba(0, 0, 0, 0.5);
+    --light-gray: gainsboro;
+    --gold-with-opacity: rgba(199, 160, 8, 0.7);
 }
 
 * {
