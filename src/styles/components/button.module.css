@@ -4,7 +4,7 @@
 }
 
 .button:disabled {
-    background-color: gray;
+    background-color: var(--gray);
 }
 
 .button:hover:not(:disabled) {

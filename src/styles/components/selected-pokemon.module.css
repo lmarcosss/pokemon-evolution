@@ -16,7 +16,7 @@
 }
 
 .wrapperImage {
-    background-color: rgba(199, 160, 8, 0.7);
+    background-color: var(--gold-with-opacity);
     border-top-left-radius: 5px;
     padding: 10px;
 }
@@ -30,7 +30,7 @@
     display: flex;
     justify-content: center;
     border-left-width: 1px;
-    border-left-color: gainsboro;
+    border-left-color: var(--light-gray);
     border-left-style: solid;
     height: 100%;
 }
