@@ -1,6 +1,6 @@
-import { Button } from '../button'
+import { Button } from '../button/button.component'
 import { FormEvent, useState } from 'react'
-import { Modal } from '../modal'
+import { Modal } from '../modal/modal.component'
 
 import styles from '@styles/components/code-modal.module.css'
 
