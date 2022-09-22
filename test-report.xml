@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/button/index.test.tsx">
-    <testCase name="Button render button" duration="62"/>
-  </file>
-  <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/base-page/index.test.tsx">
-    <testCase name="Base Page render base page" duration="61"/>
+    <testCase name="Button render button" duration="29"/>
   </file>
   <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/modal/index.test.tsx">
-    <testCase name="Modal render modal" duration="48"/>
-    <testCase name="Modal render modal when isVisible is false" duration="4"/>
+    <testCase name="Modal render modal" duration="33"/>
+    <testCase name="Modal render modal when isVisible is false" duration="7"/>
+  </file>
+  <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/base-page/index.test.tsx">
+    <testCase name="Base Page render base page" duration="35"/>
   </file>
   <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/code-modal/index.test.tsx">
     <testCase name="Code Modal render input code" duration="130"/>
     <testCase name="Code Modal render finish button" duration="8"/>
     <testCase name="Code Modal click finish button" duration="24"/>
-    <testCase name="Code Modal finish button disabled when input is empty" duration="6"/>
+    <testCase name="Code Modal finish button disabled when input is empty" duration="5"/>
   </file>
 </testExecutions>
