@@ -5,19 +5,21 @@ import { useMemo } from 'react'
 import styles from '@styles/components/selected-pokemon.module.css'
 
 interface Props {
-  pokemon: MyPokemonType
+  pokemon?: MyPokemonType
 }
 
 export function SelectedPokemon({ pokemon }: Props) {
-  const typeText = useMemo(
-    () =>
-      [...pokemon.types]?.reduce(
-        (previusValue, currentValue) =>
-          previusValue ? `${previusValue} | ${currentValue}` : currentValue,
-        ''
-      ),
-    [pokemon.types]
-  )
+  const typeText = useMemo(() => {
+    if (!pokemon?.types?.length) return ''
+
+    return [...pokemon.types]?.reduce(
+      (previusValue, currentValue) =>
+        previusValue ? `${previusValue} | ${currentValue}` : currentValue,
+      ''
+    )
+  }, [pokemon?.types])
+
+  if (!pokemon) return null
 
   return (
     <div className={styles.card}>
