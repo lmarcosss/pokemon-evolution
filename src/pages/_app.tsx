@@ -6,12 +6,12 @@ import 'react-toastify/dist/ReactToastify.css'
 import '@styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
-    return (
-        <CookiesProvider>
-            <Component {...pageProps} />
-            <ToastContainer />
-        </CookiesProvider>
-    )
+  return (
+    <CookiesProvider>
+      <Component {...pageProps} />
+      <ToastContainer />
+    </CookiesProvider>
+  )
 }
 
 export default MyApp
