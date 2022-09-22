@@ -5,6 +5,7 @@ export enum ScreensEnum {
 
 export enum CookiesKeysEnum {
   MY_POKEMON = 'myPokemon',
+  SELECTED_MISSION = 'selectedMission',
 }
 
 export enum PokemonNumberEnum {

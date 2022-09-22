@@ -46,13 +46,12 @@ function Home({ pokemonsAPI, errorMessage }: Props) {
 
   function onPlayGame() {
     const pokemon = {
+      ...selectedPokemon,
       id: selectedPokemon?.number,
       name: selectedPokemon?.name,
       level: 1,
       xp: 0,
     } as MyPokemonType
-
-    debugger
 
     setChoosedPokemon(CookiesKeysEnum.MY_POKEMON, pokemon)
     router.replace('/adventure')

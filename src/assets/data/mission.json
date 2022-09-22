@@ -23,10 +23,5 @@
         "title": "Battle to wild pokemon",
         "time": 50,
         "xp": 50
-    },
-    {
-        "title": "Battle to Team Rocket",
-        "time": 60,
-        "xp": 60
     }
 ]
