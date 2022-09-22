@@ -14,15 +14,6 @@ const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   collectoverage: true,
   testResultsProcessor: 'jest-sonar-reporter',
-  collectCoverageFrom: [
-    '<rootDir>/src',
-    '**/*.{ts,tsx}',
-    '!**/node_modules/**',
-    '!**/vendor/**',
-    '!**/sonarqube-7.1/**',
-    '!**/coverage/**',
-  ],
-  testResultsProcessor: 'jest-sonar-reporter',
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@components': '<rootDir>/src/components',
