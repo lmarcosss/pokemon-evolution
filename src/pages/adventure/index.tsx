@@ -71,43 +71,43 @@ export default function Adventure() {
     }
   }, [cookies.selectedMission, selectedMission])
 
-  useEffect(() => {
-    async function getPokemonEvolution(pokemon: MyPokemonAdventureType) {
-      try {
-        const pokemonEvolutionName =
-          pokemon.family.evolutionLine[
-            pokemon.family.evolutionStage
-          ].toLowerCase()
+  async function getPokemonEvolution(pokemon: MyPokemonAdventureType) {
+    try {
+      const pokemonEvolutionName =
+        pokemon.family.evolutionLine[
+          pokemon.family.evolutionStage
+        ].toLowerCase()
 
-        const { data: newPokemon } = await api.get<PokemonType>('/pokemon', {
-          params: { id: pokemonEvolutionName },
-        })
+      const { data: newPokemon } = await api.get<PokemonType>('/pokemon', {
+        params: { id: pokemonEvolutionName },
+      })
 
-        toast.success(
-          `Contratulation! Your pokemon evolved to ${newPokemon.name}`,
-          {
-            theme: 'colored',
-          }
-        )
-
-        setCookies(CookiesKeysEnum.MY_POKEMON, {
-          ...pokemon,
-          ...newPokemon,
-        })
-      } catch (error) {
-        const errorApi = error as ErrorType
-
-        const errorMessage =
-          errorApi.response.status === StatusCodeEnum.NOT_FOUND
-            ? ErrorMessagesEnum.POKEMON_NOT_FOUND
-            : errorApi?.message
-
-        toast.error(errorMessage || ErrorMessagesEnum.UNEXPECTED_ERROR, {
+      toast.success(
+        `Contratulation! Your pokemon evolved to ${newPokemon.name}`,
+        {
           theme: 'colored',
-        })
-      }
-    }
+        }
+      )
 
+      setCookies(CookiesKeysEnum.MY_POKEMON, {
+        ...pokemon,
+        ...newPokemon,
+      })
+    } catch (error) {
+      const errorApi = error as ErrorType
+
+      const errorMessage =
+        errorApi.response.status === StatusCodeEnum.NOT_FOUND
+          ? ErrorMessagesEnum.POKEMON_NOT_FOUND
+          : errorApi?.message
+
+      toast.error(errorMessage || ErrorMessagesEnum.UNEXPECTED_ERROR, {
+        theme: 'colored',
+      })
+    }
+  }
+
+  useEffect(() => {
     if (cookies.selectedMission && selectedMission && seconds <= 0) {
       setSelectedMission(undefined)
       removeCookie(CookiesKeysEnum.SELECTED_MISSION)
