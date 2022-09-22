@@ -8,61 +8,60 @@ import api from 'src/services'
 import styles from '@styles/pages/adventure.module.css'
 
 interface Props {
-    myPokemon: PokemonType & MyPokemonType
+  myPokemon: PokemonType & MyPokemonType
 }
 
 export default function Adventure({ myPokemon }: Props) {
-    return (
-        <BasePage>
-            <div className={styles.container}>
-                <SelectedPokemon pokemon={myPokemon} />
-                <MissionsCard missions={missions} />
-            </div>
-        </BasePage>
-    )
+  return (
+    <BasePage>
+      <div className={styles.container}>
+        <SelectedPokemon pokemon={myPokemon} />
+        <MissionsCard missions={missions} />
+      </div>
+    </BasePage>
+  )
 }
 
 async function loadMyPokemonInfo(id: string) {
-    const { data } = await api.get<PokemonType>('/pokemon', {
-        params: { id },
-    })
+  const { data } = await api.get<PokemonType>('/pokemon', {
+    params: { id },
+  })
 
-    return data
+  return data
 }
 
 export async function getServerSideProps({ req }: GetServerSidePropsContext) {
-    const cookie = req.cookies[CookiesKeysEnum.MY_POKEMON]
-    const pokemonCookieInfo: Partial<MyPokemonType> =
-        cookie && JSON.parse(cookie)
+  const cookie = req.cookies[CookiesKeysEnum.MY_POKEMON]
+  const pokemonCookieInfo: Partial<MyPokemonType> = cookie && JSON.parse(cookie)
 
-    if (!pokemonCookieInfo?.id) {
-        return {
-            redirect: {
-                destination: '/',
-                permanent: false,
-            },
-        }
+  if (!pokemonCookieInfo?.id) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
     }
+  }
 
-    try {
-        const myPokemonInfoAPI = await loadMyPokemonInfo(pokemonCookieInfo.id)
+  try {
+    const myPokemonInfoAPI = await loadMyPokemonInfo(pokemonCookieInfo.id)
 
-        return {
-            props: {
-                myPokemon: {
-                    ...myPokemonInfoAPI,
-                    ...pokemonCookieInfo,
-                },
-            },
-        }
-    } catch (error) {
-        return {
-            props: {
-                redirect: {
-                    destination: '/500',
-                    permanent: false,
-                },
-            },
-        }
+    return {
+      props: {
+        myPokemon: {
+          ...myPokemonInfoAPI,
+          ...pokemonCookieInfo,
+        },
+      },
     }
+  } catch (error) {
+    return {
+      props: {
+        redirect: {
+          destination: '/500',
+          permanent: false,
+        },
+      },
+    }
+  }
 }
