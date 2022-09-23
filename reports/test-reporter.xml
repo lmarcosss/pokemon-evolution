@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <unitTest version="1">
     <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/hooks/use-count-down.test.tsx">
-        <testCase name="useCountDown send currentDate to hook" duration="22"/>
-        <testCase name="useCountDown send futureDate to hook" duration="4"/>
-        <testCase name="useCountDown send undefined to hook" duration="2"/>
+        <testCase name="useCountDown send currentDate to hook" duration="15"/>
+        <testCase name="useCountDown send futureDate to hook" duration="3"/>
+        <testCase name="useCountDown send undefined to hook" duration="3"/>
     </file>
     <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/base-page/base-page.test.tsx">
-        <testCase name="Base Page render base page" duration="42"/>
-    </file>
-    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/modal/modal.test.tsx">
-        <testCase name="Modal render modal" duration="57"/>
-        <testCase name="Modal render modal when isVisible is false" duration="10"/>
+        <testCase name="Base Page render base page" duration="36"/>
     </file>
     <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/button/button.test.tsx">
-        <testCase name="Button render button" duration="35"/>
+        <testCase name="Button render button" duration="71"/>
+    </file>
+    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/modal/modal.test.tsx">
+        <testCase name="Modal render modal" duration="84"/>
+        <testCase name="Modal render modal when isVisible is false" duration="3"/>
     </file>
     <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/code-modal/code-modal.test.tsx">
-        <testCase name="Code Modal render input code" duration="134"/>
-        <testCase name="Code Modal render finish button" duration="12"/>
-        <testCase name="Code Modal click finish button" duration="34"/>
-        <testCase name="Code Modal finish button disabled when input is empty" duration="5"/>
+        <testCase name="Code Modal render input code" duration="184"/>
+        <testCase name="Code Modal render finish button" duration="8"/>
+        <testCase name="Code Modal click finish button" duration="21"/>
+        <testCase name="Code Modal finish button disabled when input is empty" duration="4"/>
     </file>
 </unitTest>

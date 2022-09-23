@@ -1,13 +1,11 @@
 import { act, renderHook } from '@testing-library/react'
 import { useCountdown } from '@hooks'
 
-import React, { useState as useStateMock } from 'react'
-
 const setCountDown = jest.fn()
 
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useState: (initial: any) => [initial, setCountDown],
+  useState: (countDown: any) => [countDown, setCountDown],
 }))
 
 describe('useCountDown', () => {
