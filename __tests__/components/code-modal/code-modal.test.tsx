@@ -1,5 +1,5 @@
 import { CodeModal } from '@components'
-import { fireEvent, render, screen } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 describe('Code Modal', () => {
@@ -11,6 +11,14 @@ describe('Code Modal', () => {
   }
 
   const buttonText = 'Activate Code'
+
+  beforeEach(() => {
+    jest.useFakeTimers()
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
+  })
 
   it('render input code', () => {
     const pokemonCode = '123'
@@ -44,6 +52,10 @@ describe('Code Modal', () => {
     const finishButton = screen.getByText(/Activate Code/i)
     finishButton.onclick = onFinish
     fireEvent.click(finishButton)
+
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
 
     expect(onFinish).toHaveBeenCalledTimes(1)
   })
