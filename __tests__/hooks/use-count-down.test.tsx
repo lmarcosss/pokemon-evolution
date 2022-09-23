@@ -1,19 +1,22 @@
 import { act, renderHook } from '@testing-library/react'
 import { useCountdown } from '@hooks'
 
-import React from 'react'
+import React, { useState as useStateMock } from 'react'
+
+const setCountDown = jest.fn()
+
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useState: (initial: any) => [initial, setCountDown],
+}))
 
 describe('useCountDown', () => {
-  const setCountDown = jest.fn()
-
   beforeEach(() => {
-    const useStateSpy = jest.spyOn(React, 'useState')
-
-    const useStateMock: any = (countDown: unknown) => [countDown, setCountDown]
-
-    useStateSpy.mockImplementation(useStateMock)
-
     jest.useFakeTimers()
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks()
   })
 
   it('send currentDate to hook', () => {
@@ -37,5 +40,14 @@ describe('useCountDown', () => {
 
     expect(setCountDown).toHaveBeenCalled()
     expect(result.current).not.toBeUndefined()
+  })
+
+  it('send undefined to hook', () => {
+    const { result } = renderHook(() => useCountdown(undefined))
+
+    const [seconds] = result.current
+
+    expect(seconds).toBe(0)
+    expect(setCountDown).not.toHaveBeenCalled()
   })
 })
