@@ -11,7 +11,7 @@ import api from 'src/services'
 
 import styles from '@styles/pages/adventure.module.css'
 
-type MyPokemonAdventureType = PokemonType & MyPokemonType
+interface MyPokemonAdventureType extends PokemonType, MyPokemonType {}
 
 interface SelectedMissionType extends MissionType {
   missionEndsAt?: Date
