@@ -40,8 +40,8 @@ describe('useCountDown', () => {
     expect(result.current).not.toBeUndefined()
   })
 
-  it('send undefined to hook', () => {
-    const { result } = renderHook(() => useCountdown(undefined))
+  it("don't send a value to hook", () => {
+    const { result } = renderHook(() => useCountdown())
 
     const [seconds] = result.current
 
