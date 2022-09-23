@@ -28,7 +28,7 @@ describe('useCountDown', () => {
   it('send futureDate to hook', () => {
     const date = new Date()
     const secondsExpected = 50
-    date.setSeconds(secondsExpected)
+    date.setSeconds(date.getSeconds() + secondsExpected)
 
     const { result } = renderHook(() => useCountdown(date))
 
