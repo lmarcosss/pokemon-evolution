@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <unitTest version="1">
-    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/base-page/index.test.tsx">
-        <testCase name="Base Page render base page" duration="32"/>
+    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/hooks/use-count-down.test.tsx">
+        <testCase name="useCountDown send currentDate to hook" duration="20"/>
+        <testCase name="useCountDown send futureDate to hook" duration="4"/>
     </file>
-    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/button/index.test.tsx">
-        <testCase name="Button render button" duration="34"/>
-    </file>
-    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/modal/index.test.tsx">
-        <testCase name="Modal render modal" duration="31"/>
+    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/modal/modal.test.tsx">
+        <testCase name="Modal render modal" duration="38"/>
         <testCase name="Modal render modal when isVisible is false" duration="3"/>
     </file>
-    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/code-modal/index.test.tsx">
-        <testCase name="Code Modal render input code" duration="118"/>
-        <testCase name="Code Modal render finish button" duration="8"/>
-        <testCase name="Code Modal click finish button" duration="18"/>
-        <testCase name="Code Modal finish button disabled when input is empty" duration="4"/>
+    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/base-page/base-page.test.tsx">
+        <testCase name="Base Page render base page" duration="34"/>
+    </file>
+    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/button/button.test.tsx">
+        <testCase name="Button render button" duration="30"/>
+    </file>
+    <file path="/Users/leonardomarcos/Documents/personal/pokemon-evolution/__tests__/components/code-modal/code-modal.test.tsx">
+        <testCase name="Code Modal render input code" duration="149"/>
+        <testCase name="Code Modal render finish button" duration="7"/>
+        <testCase name="Code Modal click finish button" duration="21"/>
+        <testCase name="Code Modal finish button disabled when input is empty" duration="5"/>
     </file>
 </unitTest>

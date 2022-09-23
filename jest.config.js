@@ -19,6 +19,7 @@ const customJestConfig = {
     '^@components': '<rootDir>/src/components',
     '^@types': '<rootDir>/src/types',
     '^@enums': '<rootDir>/src/enums',
+    '^@hooks': '<rootDir>/src/hooks',
     '^@styles/(.*)$': '<rootDir>/src/styles/$1',
   },
 }
