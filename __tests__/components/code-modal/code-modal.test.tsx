@@ -2,7 +2,7 @@ import { CodeModal } from '@components'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-describe('Code Modal', () => {
+describe('CodeModal', () => {
   const props = {
     onCloseModal: jest.fn(),
     isVisible: true,

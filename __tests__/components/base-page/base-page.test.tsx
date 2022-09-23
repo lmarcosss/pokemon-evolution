@@ -2,7 +2,7 @@ import { BasePage } from '@components'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-describe('Base Page', () => {
+describe('BasePage', () => {
   it('render base page', () => {
     const title = 'Catch your pokemon'
 

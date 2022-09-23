@@ -18,16 +18,19 @@ describe('useCountDown', () => {
   })
 
   it('send currentDate to hook', () => {
+    const secondsExpected = 0
+
     const { result } = renderHook(() => useCountdown(new Date()))
 
     const [seconds] = result.current
 
-    expect(seconds).toBe(0)
+    expect(seconds).toBe(secondsExpected)
   })
 
   it('send futureDate to hook', () => {
     const date = new Date()
     const secondsExpected = 50
+
     date.setSeconds(date.getSeconds() + secondsExpected)
 
     const { result } = renderHook(() => useCountdown(date))
@@ -36,16 +39,20 @@ describe('useCountDown', () => {
       jest.runOnlyPendingTimers()
     })
 
+    const [seconds] = result.current
+
     expect(setCountDown).toHaveBeenCalled()
-    expect(result.current).not.toBeUndefined()
+    expect(seconds).toBe(secondsExpected)
   })
 
   it("don't send a value to hook", () => {
+    const secondsExpected = 0
+
     const { result } = renderHook(() => useCountdown())
 
     const [seconds] = result.current
 
-    expect(seconds).toBe(0)
+    expect(seconds).toBe(secondsExpected)
     expect(setCountDown).not.toHaveBeenCalled()
   })
 })
