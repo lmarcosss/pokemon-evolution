@@ -5,8 +5,8 @@ const nextConfig = {
   images: {
     domains: [
       'cdn.traction.one',
-      'pokemon-evolution.vercel.app',
       'cdn.traction.one/pokedex/',
+      'pokeres.bastionbot.org',
     ],
   },
 }
