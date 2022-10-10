@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
-    swcMinify: true,
-    images: {
-        domains: ['cdn.traction.one'],
-    },
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['cdn.traction.one', 'https://pokemon-evolution.vercel.app'],
+  },
 }
 
 module.exports = nextConfig
