@@ -3,7 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['cdn.traction.one', 'https://pokemon-evolution.vercel.app'],
+    domains: [
+      'cdn.traction.one',
+      'pokemon-evolution.vercel.app',
+      'cdn.traction.one/pokedex/',
+    ],
   },
 }
 
