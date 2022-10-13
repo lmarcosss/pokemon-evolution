@@ -13,7 +13,12 @@ export default async function handler(
       baseURL: ApiUrlsEnum.POKEMON_API,
     })
 
-    const { data } = await http.get<PokemonResponseType>(`/${req.query.id}`)
+    const { data } = await http.get<PokemonResponseType>(`/${req.query.id}`, {
+      headers: {
+        'User-Agent':
+          'Pokemon Evolution (https://pokemon-evolution.vercel.app/, 1.0.0)',
+      },
+    })
 
     res.status(StatusCodeEnum.SUCCESS).json({ ...data[0] })
   } catch (error) {
