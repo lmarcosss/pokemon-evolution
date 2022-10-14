@@ -20,7 +20,10 @@ export default async function handler(
       },
     })
 
-    res.status(StatusCodeEnum.SUCCESS).json({ ...data[0] })
+    const id = String(req.query.id).padStart(3, '0')
+    const sprite = `https://epackoug.sirv.com/pokemon/${id}.png`
+
+    res.status(StatusCodeEnum.SUCCESS).json({ ...data[0], sprite })
   } catch (error) {
     const errorApi = error as ErrorType
 
