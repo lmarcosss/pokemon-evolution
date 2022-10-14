@@ -25,6 +25,6 @@ export enum StatusCodeEnum {
 }
 
 export enum ErrorMessagesEnum {
-  POKEMON_NOT_FOUND = 'Pokemon não encontrado!',
-  UNEXPECTED_ERROR = 'Erro inesperado',
+  POKEMON_NOT_FOUND = 'Pokemon not found!',
+  UNEXPECTED_ERROR = 'Error unexpected',
 }
