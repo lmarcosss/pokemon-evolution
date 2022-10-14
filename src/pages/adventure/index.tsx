@@ -1,10 +1,11 @@
+import { useEffect, useMemo, useState } from 'react'
 import { GetServerSidePropsContext } from 'next'
 import { CookiesKeysEnum, ErrorMessagesEnum, StatusCodeEnum } from '@enums'
 import { ErrorType, MissionType, MyPokemonType, PokemonType } from '@types'
 import { BasePage, MissionsCard, SelectedPokemon } from '@components'
 import { missions } from '@data'
-import { useEffect, useMemo, useState } from 'react'
 import { useCountdown } from '@hooks'
+import { transformSecondsToMilliseconds } from '@utils'
 import { useCookies } from 'react-cookie'
 import { toast } from 'react-toastify'
 import api from 'src/services'
@@ -40,7 +41,7 @@ export default function Adventure() {
   function getMissionEndsAt(time: number) {
     const currentDate = new Date()
 
-    const secondsToMiliSeconds = (time + 2) * 1000
+    const secondsToMiliSeconds = transformSecondsToMilliseconds(time)
 
     currentDate.setTime(currentDate.getTime() + secondsToMiliSeconds)
 
