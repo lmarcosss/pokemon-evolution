@@ -28,7 +28,7 @@ describe('Mission', () => {
     expect(missionCard).toBeInTheDocument()
   })
 
-  test('render mission of index 1', () => {
+  test('render mission of even index', () => {
     render(
       <Mission
         mission={mission}
@@ -41,22 +41,27 @@ describe('Mission', () => {
 
     const missionCard = screen.queryByTestId('mission')
 
+    expect(missionCard?.className).toContain('evenMission')
     expect(missionCard).toBeInTheDocument()
   })
 
   test('render mission when have seconds more then zero', () => {
+    const seconds = 20
+
     render(
       <Mission
         mission={mission}
         selectedMission={selectedMission}
         onClick={onClick}
-        seconds={20}
+        seconds={seconds}
         index={1}
       />
     )
 
     const missionCard = screen.queryByTestId('mission')
+    const playButton = screen.getByText(/20/)
 
+    expect(Number(playButton.textContent)).toEqual(seconds)
     expect(missionCard).toBeInTheDocument()
   })
 
@@ -67,9 +72,9 @@ describe('Mission', () => {
 
     const missionCard = screen.queryByTestId('mission')
     const playButton = screen.getByText(/Play/)
-
     fireEvent.click(playButton)
 
+    expect(onClick).toHaveBeenCalledTimes(1)
     expect(missionCard).toBeInTheDocument()
   })
 })
