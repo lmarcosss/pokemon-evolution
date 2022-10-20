@@ -20,6 +20,7 @@ const customJestConfig = {
     '^@enums': '<rootDir>/src/enums',
     '^@hooks': '<rootDir>/src/hooks',
     '^@styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@utils': '<rootDir>/src/utils',
   },
 }
 
