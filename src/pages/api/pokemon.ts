@@ -7,6 +7,9 @@ import packageInfo from '../../../package.json'
 
 const PROJECT_URL = 'https://pokemon-evolution.vercel.app'
 const PROJECT_NAME = 'Pokemon Evolution'
+const CHARACTERS_IMAGE_SIZE = 3
+const CHARACTER_IMAGE = '0'
+const IMAGE_FORMAT = '.png'
 
 export default async function handler(
   req: NextApiRequest,
@@ -25,8 +28,12 @@ export default async function handler(
 
     const [pokemon] = data
 
-    const id = String(req.query.id).padStart(3, '0')
-    const sprite = `${process.env.NEXT_PUBLIC_POKEMON_IMAGES}/${id}.png`
+    const id = String(req.query.id).padStart(
+      CHARACTERS_IMAGE_SIZE,
+      CHARACTER_IMAGE
+    )
+
+    const sprite = `${process.env.NEXT_PUBLIC_POKEMON_IMAGES}/${id}${IMAGE_FORMAT}`
 
     res.status(StatusCodeEnum.SUCCESS).json({ ...pokemon, sprite })
   } catch (error) {
