@@ -7,8 +7,8 @@ const text = 'Missions:'
 const onClick = jest.fn()
 const selectedMission = {} as MissionType
 
-describe('MissionCard', () => {
-  test('render mission card', () => {
+describe('MissionsCard', () => {
+  test('render missions card', () => {
     render(
       <MissionsCard
         onClick={onClick}
@@ -17,7 +17,7 @@ describe('MissionCard', () => {
       />
     )
 
-    const missionCard = screen.queryByTestId('mission-card')
+    const missionCard = screen.queryByTestId('missions-card')
     const textElement = screen.getByText(text)
 
     expect(textElement.textContent).toBe(text)

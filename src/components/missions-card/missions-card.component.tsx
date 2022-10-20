@@ -17,7 +17,7 @@ export function MissionsCard({
   seconds,
 }: IProps) {
   return (
-    <div data-testid="mission-card" className={styles.missionsCard}>
+    <div data-testid="missions-card" className={styles.missionsCard}>
       <p className={styles.titleMissionsCard}>Missions:</p>
 
       {missions.map((mission, index) => (
