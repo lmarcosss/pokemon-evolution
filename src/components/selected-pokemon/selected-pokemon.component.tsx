@@ -22,7 +22,7 @@ export function SelectedPokemon({ pokemon }: Props) {
   if (!pokemon) return null
 
   return (
-    <div className={styles.card}>
+    <div data-testid="selected-pokemon" className={styles.card}>
       <div className={styles.content}>
         <div className={styles.wrapperImage}>
           <Image

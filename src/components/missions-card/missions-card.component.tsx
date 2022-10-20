@@ -24,7 +24,7 @@ export function MissionsCard({
         <Mission
           onClick={onClick}
           selectedMission={selectedMission}
-          key={mission.title}
+          key={mission.title + index}
           mission={mission}
           index={index}
           seconds={seconds}
