@@ -1,3 +1,3 @@
 export function transformSecondsToMilliseconds(seconds: number) {
-  return (seconds + 2) * 1000
+  return seconds * 1000
 }

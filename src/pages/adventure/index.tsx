@@ -40,8 +40,11 @@ export default function Adventure() {
 
   function getMissionEndsAt(time: number) {
     const currentDate = new Date()
+    const secondsDelay = 2
 
-    const secondsToMiliSeconds = transformSecondsToMilliseconds(time)
+    const secondsToMiliSeconds = transformSecondsToMilliseconds(
+      time + secondsDelay
+    )
 
     currentDate.setTime(currentDate.getTime() + secondsToMiliSeconds)
 
