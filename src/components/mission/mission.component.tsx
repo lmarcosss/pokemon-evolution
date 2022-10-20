@@ -24,6 +24,7 @@ export function Mission({
 
   return (
     <div
+      data-testid="mission"
       className={`
                 ${styles.mission}
                 ${index % 2 !== 0 && styles.evenMission}
