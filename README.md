@@ -27,6 +27,12 @@ yarn dev
   <img width="800px" src="https://user-images.githubusercontent.com/32651857/189775835-064e4f17-2d6c-44c7-957b-f5bde72b6e4c.png" />
 </p>
 
+### App Adventure
+#### This page you will play the missions of the game and gain more xp to evolve your pokemon!
+<p align="center">
+  <img width="800px" alt="image" src="https://user-images.githubusercontent.com/32651857/197049263-72eda8b4-2a1e-4d8f-9fd7-919411727826.png">
+</p>
+
 ## Technologies
 * [NextJS](https://github.com/vercel/next.js)
 * [React Toastfy](https://github.com/fkhadra/react-toastify)
