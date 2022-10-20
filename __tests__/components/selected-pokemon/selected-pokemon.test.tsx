@@ -1,6 +1,6 @@
 import { SelectedPokemon } from '@components'
 import { render, screen } from '@testing-library/react'
-import { MyPokemonType, PokemonType } from '@types'
+import { MyPokemonType } from '@types'
 import '@testing-library/jest-dom'
 
 const pokemon = {
