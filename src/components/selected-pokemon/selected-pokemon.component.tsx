@@ -12,12 +12,12 @@ export function SelectedPokemon({ pokemon }: Props) {
   const typeText = useMemo(() => {
     if (!pokemon?.types?.length) return ''
 
-    return [...pokemon.types]?.reduce(
+    return pokemon.types.reduce(
       (previusValue, currentValue) =>
         previusValue ? `${previusValue} | ${currentValue}` : currentValue,
       ''
     )
-  }, [pokemon?.types])
+  }, [pokemon])
 
   if (!pokemon) return null
 
