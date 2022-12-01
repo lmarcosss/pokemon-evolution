@@ -40,6 +40,7 @@ yarn dev
 * [Axios](https://github.com/axios/axios)
 * [Typescript](https://github.com/microsoft/TypeScript)
 * [Jest](https://github.com/facebook/jest)
+* [Cypress](https://www.cypress.io/)
 * [React Testing Library](https://github.com/testing-library/react-testing-library)
 * [Prettier](https://github.com/prettier/prettier)
 * [Eslint](https://github.com/eslint/eslint)
