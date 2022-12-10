@@ -36,7 +36,12 @@ export function Mission({
         <p>XP: {mission.xp}</p>
       </div>
 
-      <Button disabled={!!selectedMission} onClick={() => onClick(mission)}>
+      <Button
+        data-test-id={`mission-button-${String(index).padStart(2, '0')}`}
+        className={styles.missionButton}
+        disabled={!!selectedMission}
+        onClick={() => onClick(mission)}
+      >
         {textButton}
       </Button>
     </div>

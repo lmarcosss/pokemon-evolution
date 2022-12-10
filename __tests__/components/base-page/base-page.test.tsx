@@ -1,6 +1,6 @@
 import { BasePage } from '@components'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/extend-expect'
 
 describe('BasePage', () => {
   it('render base page', () => {

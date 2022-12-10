@@ -1,6 +1,6 @@
 import { Button } from '@components'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/extend-expect'
 
 describe('Button', () => {
   test('render button', () => {
@@ -8,7 +8,7 @@ describe('Button', () => {
 
     render(<Button>{text}</Button>)
 
-    const button = screen.getByTestId<HTMLButtonElement>('button')
+    const button = screen.getByText(text)
 
     expect(button.textContent).toBe(text)
     expect(button).toBeInTheDocument()

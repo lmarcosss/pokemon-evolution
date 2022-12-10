@@ -3,5 +3,6 @@
     "next/core-web-vitals",
     "prettier",
     "plugin:@next/next/recommended"
-  ]
+  ],
+  "plugins": ["cypress"]
 }
