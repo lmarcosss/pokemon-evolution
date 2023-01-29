@@ -1,7 +1,6 @@
 import { CodeModal } from '@components'
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import exp from 'constants'
 
 describe('CodeModal', () => {
   const props = {

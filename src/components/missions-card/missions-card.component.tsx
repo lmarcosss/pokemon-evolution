@@ -20,11 +20,11 @@ export function MissionsCard({
     <div data-testid="missions-card" className={styles.missionsCard}>
       <p className={styles.titleMissionsCard}>Missions:</p>
 
-      {missions.map((mission, index) => (
+      {missions.map((mission) => (
         <Mission
           onClick={onClick}
           selectedMission={selectedMission}
-          key={mission.title + index}
+          key={mission.id}
           mission={mission}
           index={index}
           seconds={seconds}
