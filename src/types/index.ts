@@ -41,6 +41,7 @@ export interface SelectedPokemonType extends PokemonType {
 }
 
 export interface MissionType {
+  id: string
   title: string
   time: number
   xp: number
