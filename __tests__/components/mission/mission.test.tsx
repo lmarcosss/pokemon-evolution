@@ -28,7 +28,7 @@ describe('Mission', () => {
     expect(missionCard).toBeInTheDocument()
   })
 
-  test('render mission of even index', () => {
+  test('render mission of odd index', () => {
     render(
       <Mission
         mission={mission}
