@@ -27,7 +27,7 @@ export function Mission({
       data-testid="mission"
       className={`
                 ${styles.mission}
-                ${index % 2 !== 0 && styles.evenMission}
+                ${index % 2 !== 0 && styles.oddMission}
             `}
     >
       <div>
