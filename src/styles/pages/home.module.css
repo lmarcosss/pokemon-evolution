@@ -20,6 +20,8 @@
   color: var(--yellow);
   font-size: 90px;
   text-align: center;
+  background-color: transparent;
+  border: none;
   margin-bottom: 50px;
   font-family: var(--font-family-pokemon-solid), Arial, Helvetica, sans-serif;
 }

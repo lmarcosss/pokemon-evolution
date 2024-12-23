@@ -92,7 +92,11 @@ function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
     <BasePage>
       <div className={styles.chooseOurPokemonScreen}>
         <span className={styles.title}>
-          Choose <span onClick={onOpenModal}>your</span> Pokémon
+          Choose{' '}
+          <button className={styles.title} onClick={onOpenModal}>
+            your
+          </button>{' '}
+          Pokémon
         </span>
 
         <div className={styles.containerPokemons}>
