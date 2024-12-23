@@ -1,0 +1,46 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # Dispara o workflow ao fazer push na branch "main"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Clonar o Repositório
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Configurar Acesso SSH ao Servidor
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      # 3. Deploy no Servidor
+      - name: Deploy to Droplet
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER || 'root' }}@${{ secrets.DROPLET_IP }} << 'EOF'
+            # Atualizar Código no Servidor
+            cd ~/projects/pokemon-evolution || exit
+            git pull origin main
+
+            # Parar e Remover Containers Antigos
+            docker stop pokemon-evolution-container || true
+            docker rm pokemon-evolution-container || true
+
+            # Remover Imagem Docker Antiga
+            docker rmi pokemon-evolution-app || true
+
+            # Buildar Nova Imagem Docker
+            docker build -t pokemon-evolution-app .
+
+            # Rodar Novo Container
+            docker run -d -p 3000:3000 --name pokemon-evolution-container pokemon-evolution-app
+
+            # Reiniciar o Nginx para Refletir as Alterações
+            systemctl restart nginx
+          EOF
