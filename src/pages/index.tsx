@@ -26,7 +26,7 @@ interface Props {
   errorMessage?: string
 }
 
-function Home({ pokemonsAPI, errorMessage }: Props) {
+function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
   const [selectedPokemon, setSelectedPokemon] =
     useState<SelectedPokemonType | null>(null)
   const [pokemons, setPokemons] = useState<SelectedPokemonType[]>(
