@@ -5,7 +5,7 @@ interface Props {
   title?: string
 }
 
-export function BasePage({ children, title = 'Catch your pokemon' }: Props) {
+export function BasePage({ children, title = 'Pokemon Evolution' }: Props) {
   return (
     <>
       <Head>

@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect'
 
 describe('BasePage', () => {
   it('render base page', () => {
-    const title = 'Catch your pokemon'
+    const title = 'Pokemon Evolution'
 
     render(
       <BasePage>
