@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lmarcosss_pokemon-evolution&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=lmarcosss_pokemon-evolution)
+
 # Pokemon Evolution
 
 ## Getting Started
