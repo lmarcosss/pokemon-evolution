@@ -24,5 +24,7 @@ jobs:
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
+          SONAR_SCANNER_SKIP_JRE_PROVISIONING: 'true'
+          SONAR_SCANNER_JAVA_PATH: ${{ env.JAVA_HOME }}/bin/java
