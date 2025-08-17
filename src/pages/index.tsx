@@ -47,8 +47,6 @@ function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
   function onPlayGame() {
     const pokemon = {
       ...selectedPokemon,
-      id: selectedPokemon?.number,
-      name: selectedPokemon?.name,
       level: 1,
       xp: 0,
     } as MyPokemonType
@@ -67,9 +65,9 @@ function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
 
   async function onSubmitCode(code: string) {
     try {
-      const { data: newPokemon } = await api.get<PokemonType>('/pokemon', {
-        params: { id: code },
-      })
+      const { data: newPokemon } = await api.get<PokemonType>(
+        `/pokemon/${code}`
+      )
 
       setPokemons([{ ...newPokemon, isPokemonByCode: true }])
     } catch (error) {
@@ -88,6 +86,8 @@ function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
     }
   }
 
+  console.log(pokemons)
+
   return (
     <BasePage>
       <div className={styles.chooseOurPokemonScreen}>
@@ -102,7 +102,7 @@ function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
         <div className={styles.containerPokemons}>
           {pokemons.map((pokemon) => (
             <Button
-              key={pokemon.name}
+              key={pokemon.name?.english}
               onClick={() => setSelectedPokemon(pokemon)}
               className={
                 pokemon.name === selectedPokemon?.name
@@ -113,14 +113,15 @@ function Home({ pokemonsAPI, errorMessage }: Readonly<Props>) {
               <Image
                 width={200}
                 height={200}
-                alt={`Pokemon ${pokemon.name}`}
-                src={pokemon.sprite}
+                alt={`Pokemon ${pokemon.name.english}`}
+                src={pokemon.image?.hires}
               />
             </Button>
           ))}
         </div>
 
         <Button
+          type="button"
           disabled={!selectedPokemon}
           onClick={onPlayGame}
           className={styles.play}
@@ -144,9 +145,7 @@ function loadStarterPokemons() {
     PokemonNumberEnum.CHARMANDER,
     PokemonNumberEnum.SQUIRTLE,
   ].map(async (id) => {
-    const { data } = await api.get<PokemonType>('/pokemon', {
-      params: { id },
-    })
+    const { data } = await api.get<PokemonType>(`/pokemon/${id}`)
 
     return data
   })

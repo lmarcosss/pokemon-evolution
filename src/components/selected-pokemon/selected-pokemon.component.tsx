@@ -10,9 +10,9 @@ interface Props {
 
 export function SelectedPokemon({ pokemon }: Props) {
   const typeText = useMemo(() => {
-    if (!pokemon?.types?.length) return ''
+    if (!pokemon?.type?.length) return ''
 
-    return pokemon.types.reduce(
+    return pokemon.type.reduce(
       (previusValue, currentValue) =>
         previusValue ? `${previusValue} | ${currentValue}` : currentValue,
       ''
@@ -29,13 +29,13 @@ export function SelectedPokemon({ pokemon }: Props) {
             className={styles.pokemonImage}
             width={150}
             height={150}
-            alt={pokemon.name}
-            src={pokemon.sprite}
+            alt={pokemon.name.english}
+            src={pokemon.image.hires}
           />
         </div>
         <div className={styles.wrapper}>
           <div className={styles.information}>
-            <p className={styles.name}>{pokemon.name}</p>
+            <p className={styles.name}>{pokemon.name.english}</p>
 
             <p>{`Types: ${typeText}`}</p>
 
