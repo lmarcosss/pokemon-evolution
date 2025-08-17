@@ -4,48 +4,87 @@ import { MyPokemonType } from '@types'
 import '@testing-library/jest-dom'
 
 const pokemon = {
-  id: '155',
-  number: '155',
-  name: 'Cyndaquil',
-  species: 'Fire Mouse',
-  types: ['Fire'],
-  abilities: { normal: ['Blaze'], hidden: ['Flash Fire'] },
-  eggGroups: ['Field'],
-  gender: [87.5, 12.5],
-  height: '1\'08"',
-  weight: '17.4 lbs.',
-  family: {
-    id: 80,
-    evolutionStage: 1,
-    evolutionLine: ['Cyndaquil', 'Quilava', 'Typhlosion'],
+  id: 155,
+  name: {
+    english: 'Cyndaquil',
+    japanese: 'ヒノアラシ',
+    chinese: '火球鼠',
+    french: 'Héricendre',
   },
-  starter: true,
-  sprite: 'https://epackoug.sirv.com/pokemon/155.png',
+  type: ['Fire'],
+  base: {
+    HP: 39,
+    Attack: 52,
+    Defense: 43,
+    'Sp. Attack': 60,
+    'Sp. Defense': 50,
+    Speed: 65,
+  },
+  species: 'Fire Mouse Pokémon',
   description:
-    'The fire that spouts from its back burns hottest when it is angry. The flaring flames intimidate foes.',
+    'Cyndaquil protects itself by flaring up the flames on its back. The flames are vigorous if the Pokémon is angry. However, if it is tired, the flames splutter fitfully with incomplete combustion.',
+  evolution: { next: ['156', 'Level 14'] },
+  profile: {
+    height: '0.5 m',
+    weight: '7.9 kg',
+    egg: ['Field'],
+    ability: [
+      ['Blaze', 'false'],
+      ['Flash Fire', 'true'],
+    ],
+    gender: '87.5:12.5',
+  },
+  image: {
+    sprite:
+      'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/155.png',
+    thumbnail:
+      'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/155.png',
+    hires:
+      'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/155.png',
+  },
   level: 1,
   xp: 0,
 } as MyPokemonType
 
 const pokemonWithTwoTypes = {
-  id: '3',
-  number: '3',
-  name: 'Venusaur',
-  species: 'Seed',
-  types: ['Grass', 'Poison'],
-  abilities: { normal: ['Overgrow'], hidden: ['Chlorophyll'] },
-  gender: [87.5, 12.5],
-  height: '6\'07"',
-  weight: '220.5 lbs.',
-  family: {
-    id: 1,
-    evolutionStage: 3,
-    evolutionLine: ['Bulbasaur', 'Ivysaur', 'Venusaur'],
+  id: 3,
+  name: {
+    english: 'Venusaur',
+    japanese: 'フシギバナ',
+    chinese: '妙蛙花',
+    french: 'Florizarre',
   },
-  starter: false,
-  sprite: 'https://epackoug.sirv.com/pokemon/003.png',
+  type: ['Grass', 'Poison'],
+  base: {
+    HP: 80,
+    Attack: 82,
+    Defense: 83,
+    'Sp. Attack': 100,
+    'Sp. Defense': 100,
+    Speed: 80,
+  },
+  species: 'Seed Pokémon',
   description:
-    'As it warms itself and absorbs the sunlight, its flower petals release a pleasant fragrance.',
+    'There is a large flower on Venusaur’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people.',
+  evolution: { prev: ['2', 'Level 32'] },
+  profile: {
+    height: '2 m',
+    weight: '100 kg',
+    egg: ['Monster', 'Grass'],
+    ability: [
+      ['Overgrow', 'false'],
+      ['Chlorophyll', 'true'],
+    ],
+    gender: '87.5:12.5',
+  },
+  image: {
+    sprite:
+      'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/003.png',
+    thumbnail:
+      'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/003.png',
+    hires:
+      'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/003.png',
+  },
   level: 1,
   xp: 0,
 } as MyPokemonType
@@ -60,15 +99,7 @@ describe('SelectedPokemon', () => {
   })
 
   test('render selected pokemon', () => {
-    render(
-      <SelectedPokemon
-        pokemon={
-          {
-            sprite: 'https://epackoug.sirv.com/pokemon/003.png',
-          } as MyPokemonType
-        }
-      />
-    )
+    render(<SelectedPokemon pokemon={pokemonWithTwoTypes} />)
 
     const selectedPokemon = screen.queryByTestId('selected-pokemon')
 

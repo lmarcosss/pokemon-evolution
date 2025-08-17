@@ -22,7 +22,8 @@ export interface PokemonType {
   species: string
   description: string
   evolution: {
-    next: [string, string][]
+    prev?: [string, string]
+    next?: [string, string]
   }
   profile: {
     height: string
