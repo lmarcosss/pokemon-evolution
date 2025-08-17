@@ -1,17 +1,20 @@
 FROM node:22.15.0
 
-WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /src
 
-ENV NODE_ENV=production
-ENV PORT=3000
-ENV HOSTNAME=0.0.0.0
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN yarn install
 
-COPY package.json yarn.lock* ./
-RUN yarn install --frozen-lockfile --production=false
-
+# Copy the entire application code
 COPY . .
 
-RUN npm run build
+# Build the application
+RUN yarn build
 
+# Expose the port your app runs on
 EXPOSE 3000
+
+# Command to start the application
 CMD ["yarn", "start"]
