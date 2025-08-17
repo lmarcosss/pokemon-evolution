@@ -15,8 +15,7 @@ export enum PokemonNumberEnum {
 }
 
 export enum ApiUrlsEnum {
-  NEXT_API = 'http://localhost:3000/api',
-  POKEMON_API = 'https://pokeapi.glitch.me/v1/pokemon',
+  POKEMON_API = 'https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master',
 }
 
 export enum StatusCodeEnum {

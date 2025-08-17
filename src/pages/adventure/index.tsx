@@ -77,17 +77,16 @@ export default function Adventure() {
 
   async function getPokemonEvolution(pokemon: MyPokemonAdventureType) {
     try {
-      const pokemonEvolutionName =
-        pokemon.family.evolutionLine[
-          pokemon.family.evolutionStage
-        ].toLowerCase()
+      const [evolutionId] = pokemon.evolution.next[0]
 
-      const { data: newPokemon } = await api.get<PokemonType>('/pokemon', {
-        params: { id: pokemonEvolutionName },
-      })
+      console.log(pokemon.evolution)
+
+      const { data: newPokemon } = await api.get<PokemonType>(
+        `/pokemon/${evolutionId}`
+      )
 
       toast.success(
-        `Contratulation! Your pokemon evolved to ${newPokemon.name}`,
+        `Contratulation! Your pokemon evolved to ${newPokemon.name.english}`,
         {
           theme: 'colored',
         }
@@ -135,13 +134,16 @@ export default function Adventure() {
         xp: experienceAmount >= MAX_EXP ? experienceRest : experienceAmount,
       }
 
-      const hasEvolution = pokemon.family.evolutionLine.length > 1
-      const firstEvolutionStage =
-        level === 3 && pokemon.family.evolutionStage === 1
-      const secondEvolutionStage =
-        level === 5 && pokemon.family.evolutionStage === 2
+      const hasEvolution = pokemon.evolution.next.length > 0
+      const hasEvolved = experienceAmount >= 100
+      const firstEvolutionStage = level === 2
+      const secondEvolutionStage = level === 4
 
-      if (hasEvolution && (firstEvolutionStage || secondEvolutionStage)) {
+      if (
+        hasEvolution &&
+        hasEvolved &&
+        (firstEvolutionStage || secondEvolutionStage)
+      ) {
         getPokemonEvolution(pokemon)
       } else {
         setCookies(CookiesKeysEnum.MY_POKEMON, pokemon)

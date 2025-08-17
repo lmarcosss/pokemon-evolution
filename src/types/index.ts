@@ -3,18 +3,39 @@ export interface PokemonResponseType {
 }
 
 export interface PokemonType {
-  number: string
-  name: string
-  types: string[]
-  height: string
-  weight: string
-  family: {
-    evolutionStage: number
-    evolutionLine: string[]
+  id: number
+  name: {
+    english: string
+    japanese: string
+    chinese: string
+    french: string
   }
-  starter: boolean
-  sprite: string
+  type: string[]
+  base: {
+    HP: number
+    Attack: number
+    Defense: number
+    'Sp. Attack': number
+    'Sp. Defense': number
+    Speed: number
+  }
+  species: string
   description: string
+  evolution: {
+    next: [string, string][]
+  }
+  profile: {
+    height: string
+    weight: string
+    egg: string[]
+    ability: [string, string][]
+    gender: string
+  }
+  image: {
+    sprite: string
+    thumbnail: string
+    hires: string
+  }
 }
 
 export interface ErrorType {
@@ -30,8 +51,6 @@ export interface ErrorType {
 }
 
 export interface MyPokemonType extends PokemonType {
-  id: string
-  name: string
   level: number
   xp: number
 }

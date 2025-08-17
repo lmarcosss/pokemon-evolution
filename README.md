@@ -49,7 +49,3 @@ yarn dev
 - [React Testing Library](https://github.com/testing-library/react-testing-library)
 - [Prettier](https://github.com/prettier/prettier)
 - [Eslint](https://github.com/eslint/eslint)
-
-## External API's
-
-- [PokeDex API](https://pokedevs.gitbook.io/pokedex/)
